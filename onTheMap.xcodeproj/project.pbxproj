@@ -7,14 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D30811BF222BF2AB001BDCF7 /* MapScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30811BE222BF2AB001BDCF7 /* MapScreenViewController.swift */; };
+		D379D48B222C42C100B73F1C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379D48A222C42C100B73F1C /* StudentInformation.swift */; };
 		D3C936362225F57A000CA419 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C936352225F57A000CA419 /* AppDelegate.swift */; };
 		D3C936382225F57A000CA419 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C936372225F57A000CA419 /* ViewController.swift */; };
 		D3C9363B2225F57A000CA419 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C936392225F57A000CA419 /* Main.storyboard */; };
 		D3C9363D2225F582000CA419 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D3C9363C2225F582000CA419 /* Assets.xcassets */; };
 		D3C936402225F582000CA419 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D3C9363E2225F582000CA419 /* LaunchScreen.storyboard */; };
+		D3E64C6D22260DE6009F6836 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E64C6C22260DE6009F6836 /* TableViewController.swift */; };
+		D3E64C6F22260F87009F6836 /* GeneralTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3E64C6E22260F87009F6836 /* GeneralTabView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D30811BE222BF2AB001BDCF7 /* MapScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenViewController.swift; sourceTree = "<group>"; };
+		D379D48A222C42C100B73F1C /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		D3C936322225F57A000CA419 /* onTheMap.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = onTheMap.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D3C936352225F57A000CA419 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D3C936372225F57A000CA419 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +28,8 @@
 		D3C9363C2225F582000CA419 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D3C9363F2225F582000CA419 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D3C936412225F582000CA419 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3E64C6C22260DE6009F6836 /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		D3E64C6E22260F87009F6836 /* GeneralTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralTabView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 				D3C9363C2225F582000CA419 /* Assets.xcassets */,
 				D3C9363E2225F582000CA419 /* LaunchScreen.storyboard */,
 				D3C936412225F582000CA419 /* Info.plist */,
+				D3E64C6C22260DE6009F6836 /* TableViewController.swift */,
+				D3E64C6E22260F87009F6836 /* GeneralTabView.swift */,
+				D30811BE222BF2AB001BDCF7 /* MapScreenViewController.swift */,
+				D379D48A222C42C100B73F1C /* StudentInformation.swift */,
 			);
 			path = onTheMap;
 			sourceTree = "<group>";
@@ -136,7 +148,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3C936382225F57A000CA419 /* ViewController.swift in Sources */,
+				D379D48B222C42C100B73F1C /* StudentInformation.swift in Sources */,
+				D3E64C6D22260DE6009F6836 /* TableViewController.swift in Sources */,
 				D3C936362225F57A000CA419 /* AppDelegate.swift in Sources */,
+				D30811BF222BF2AB001BDCF7 /* MapScreenViewController.swift in Sources */,
+				D3E64C6F22260F87009F6836 /* GeneralTabView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
