@@ -28,6 +28,16 @@ class ViewController: UIViewController {
         
     }
     
+
+    func alertError() {
+        
+            let alert = UIAlertController(title: "Alert", message: "Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+
+        
+    }
+    
     
     
     @IBAction func EditingDidEnd(_ sender: UITextField) {
@@ -79,9 +89,13 @@ class ViewController: UIViewController {
                 
                 //TODO: Add error allert
                 
-                let alert = UIAlertController(title: "Alert", message: "Message", preferredStyle: UIAlertController.Style.alert)
-                alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
+                DispatchQueue.main.async {
+                    
+                    self.alertError()
+                    
+                }
+                
+                
                 
                 print("Fine errore")
                 return

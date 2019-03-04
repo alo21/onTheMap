@@ -9,6 +9,9 @@
 import UIKit
 
 class GeneralTabView: UITabBarController {
+    
+    var StudentsArray: [StudentInformation] = []
+    var myInfo: StudentInformation!
 
     
     @IBOutlet var logoutButton: UIBarButtonItem!
@@ -46,7 +49,27 @@ class GeneralTabView: UITabBarController {
             if error != nil { // Handle error...
                 return
             }
-            print(String(data: data!, encoding: .utf8)!)
+            
+            guard let data = data else {
+                
+                print("No data")
+                return
+            }
+            
+            do {
+                //var myData = String(data: data, encoding: .utf8)!
+                let StudentResponse = try JSONDecoder().decode(StudentsInfoResults.self, from: data)
+                self.StudentsArray = StudentResponse.results.map({$0})
+                
+                
+                
+            } catch {
+                let myError = error as NSError
+                print("Qualcosa non va")
+                print(error)
+                
+            }
+            
         }
         task.resume()
         
