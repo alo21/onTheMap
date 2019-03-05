@@ -9,9 +9,21 @@
 import UIKit
 
 class TableViewController: UITableViewController {
+    
+    var students: [StudentInformation]! {
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        return appDelegate.Students
+    }
+
+        
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("Sono in tabViewMiooo")
+        print(students)
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -19,28 +31,41 @@ class TableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //tableView.reloadData()
+    }
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.students.count
+        
     }
-
-    /*
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentCell
+        let student = self.students[(indexPath as NSIndexPath).row]
+        
+        
+        cell.fullnameLabel.text = student.firstName! + " " + student.lastName!
+        cell.LinkText.text = student.mediaURL!
+        
+ 
+        
         return cell
-    }
-    */
+
+    } 
 
     /*
     // Override to support conditional editing of the table view.

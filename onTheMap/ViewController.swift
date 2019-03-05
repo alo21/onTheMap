@@ -31,6 +31,8 @@ class ViewController: UIViewController {
 
     func alertError() {
         
+        print("Show error alert")
+        
             let alert = UIAlertController(title: "Alert", message: "Check your internet connection", preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
@@ -87,19 +89,19 @@ class ViewController: UIViewController {
                 
                 print("Eerrore")
                 
-                //TODO: Add error allert
-                
                 DispatchQueue.main.async {
                     
                     self.alertError()
                     
-                }
                 
+                }
                 
                 
                 print("Fine errore")
                 return
             }
+            
+            
             let range = Range(5..<data!.count)
             let newData = data?.subdata(in: range) /* subset response data! */
             

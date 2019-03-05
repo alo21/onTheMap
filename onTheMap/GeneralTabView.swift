@@ -63,6 +63,25 @@ class GeneralTabView: UITabBarController {
                 
                 
                 
+                DispatchQueue.main.async {
+                    
+            
+                let object = UIApplication.shared.delegate
+                let appDelegate = object as! AppDelegate
+                
+                //Loop thrhough to save in shared
+                    for student in self.StudentsArray {
+                        
+                        appDelegate.Students.append(student)
+                        
+                    }
+                    
+                }
+                
+                
+                
+                
+                
             } catch {
                 let myError = error as NSError
                 print("Qualcosa non va")
@@ -77,6 +96,8 @@ class GeneralTabView: UITabBarController {
     
     
     @IBAction func onRefreshButtonPressed(_ sender: UIBarButtonItem) {
+        
+        print("Refresh pressed")
         
         getStudentData()
         
