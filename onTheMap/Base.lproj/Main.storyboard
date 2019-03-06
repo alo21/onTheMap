@@ -202,10 +202,10 @@
             </objects>
             <point key="canvasLocation" x="-135" y="64"/>
         </scene>
-        <!--View Controller-->
+        <!--Add Pin View Controller-->
         <scene sceneID="RFr-kZ-F9e">
             <objects>
-                <viewController id="o9l-KY-e0Y" sceneMemberID="viewController">
+                <viewController id="o9l-KY-e0Y" customClass="AddPinViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Qha-6d-a9z">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -217,7 +217,9 @@
                                 <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="FIND LOCATION"/>
                                 <connections>
+                                    <action selector="findLocation:" destination="o9l-KY-e0Y" eventType="touchUpInside" id="Abw-8v-s5L"/>
                                     <action selector="onLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LVU-v5-eI7"/>
+                                    <segue destination="c02-fE-Vi3" kind="show" id="Poe-0y-ZQc"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Enter a Location" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lLi-1m-Plw">
@@ -236,7 +238,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="0N7-0A-zMd"/>
                                     <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="EAB-RO-ydZ"/>
@@ -250,10 +252,49 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="ztb-gc-pEP"/>
                     </view>
+                    <connections>
+                        <outlet property="location_Input" destination="lLi-1m-Plw" id="nIV-Xg-2b7"/>
+                        <outlet property="website_Input" destination="f40-4N-Gt1" id="m3k-Lr-H1R"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="klh-pH-fcJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2446" y="-1053"/>
+        </scene>
+        <!--Add Place Map View Controller-->
+        <scene sceneID="ho7-6m-vvt">
+            <objects>
+                <viewController id="c02-fE-Vi3" customClass="AddPlaceMapViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="peD-r2-ouI">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hdb-pk-veb">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fJm-0b-nnp">
+                                <rect key="frame" x="38" y="587" width="298" height="51"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="FINISH"/>
+                                <connections>
+                                    <action selector="onFinishClicked:" destination="c02-fE-Vi3" eventType="touchUpInside" id="OKf-b5-5Zy"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="9cx-bd-Kvw"/>
+                    </view>
+                    <connections>
+                        <outlet property="finishButton" destination="fJm-0b-nnp" id="9BS-aC-Frr"/>
+                        <outlet property="mapView" destination="hdb-pk-veb" id="QgQ-On-2gG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pp3-pp-td3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3693.5999999999999" y="-1054.7226386806597"/>
         </scene>
         <!--On The Map-->
         <scene sceneID="Ka0-jR-VPX">

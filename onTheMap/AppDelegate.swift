@@ -13,7 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var Students = [StudentInformation]() 
+    var Students = [StudentInformation]()
+    
+    var infoToAdd = StudentInformation(objectId: "nil", uniqueKey: "nil", firstName: "nil", lastName: "nil", mapString: "nil", mediaURL: "nil", latitude: nil, longitude: nil, createdAt: "nil", updatedAt: "nil")
+    
+    var infoToSend = StudentInformation(objectId: "nil", uniqueKey: "nil", firstName: "nil", lastName: "nil", mapString: "nil", mediaURL: "nil", latitude: nil, longitude: nil, createdAt: "nil", updatedAt: "nil")
+    
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

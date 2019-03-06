@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate{
     
     struct LoginInfo: Codable {
         let username: String
@@ -22,6 +22,9 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.Email_Input.delegate = self
+        self.Password_Input.delegate = self
         
         LoginButton.isEnabled = false
         
@@ -62,6 +65,12 @@ class ViewController: UIViewController {
         
         authenticate(user: user)
         
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+                
+        textField.resignFirstResponder()
+        return true
     }
     
     func authenticate(user: LoginInfo) {
