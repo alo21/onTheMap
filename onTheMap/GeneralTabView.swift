@@ -71,7 +71,7 @@ class GeneralTabView: UITabBarController {
                 
                 //Loop thrhough to save in shared
                     for student in self.StudentsArray {
-                        
+                    
                         appDelegate.Students.append(student)
                         
                     }
@@ -100,7 +100,7 @@ class GeneralTabView: UITabBarController {
         print("Refresh pressed")
         
         getStudentData()
-        
+                
     }
     
     

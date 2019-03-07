@@ -15,9 +15,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     var Students = [StudentInformation]()
     
-    var infoToAdd = StudentInformation(objectId: "nil", uniqueKey: "nil", firstName: "nil", lastName: "nil", mapString: "nil", mediaURL: "nil", latitude: nil, longitude: nil, createdAt: "nil", updatedAt: "nil")
+    var infoToAdd = StudentInformation(objectId: "nil", uniqueKey: "nil", firstName: "nil", lastName: "nil", mapString: "nil", mediaURL: "nil", latitude: nil, longitude: nil, createdAt: nil, updatedAt: nil)
     
-    var infoToSend = StudentInformation(objectId: "nil", uniqueKey: "nil", firstName: "nil", lastName: "nil", mapString: "nil", mediaURL: "nil", latitude: nil, longitude: nil, createdAt: "nil", updatedAt: "nil")
+    var infoToSend = StudentInformationSend(uniqueKey: "nil", firstName: "nil", lastName: "nil", mapString: "nil", mediaURL: "nil", latitude: nil, longitude: nil, createdAt: nil, updatedAt: nil)
     
 
 

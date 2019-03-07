@@ -21,9 +21,7 @@ class TableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        print("Sono in tabViewMiooo")
-        print(students)
+    
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -57,13 +55,16 @@ class TableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "StudentCell", for: indexPath) as! StudentCell
         let student = self.students[(indexPath as NSIndexPath).row]
         
+        if(student.firstName != nil && student.lastName != nil) {
         
         cell.fullnameLabel.text = student.firstName! + " " + student.lastName!
         cell.LinkText.text = student.mediaURL!
         
- 
+        }
         
         return cell
+            
+        
 
     } 
 
