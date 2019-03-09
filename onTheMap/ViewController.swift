@@ -20,6 +20,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var Password_Input: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
     var currentTappedTextField : UITextField?
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,11 +34,11 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
 
-    func alertError() {
+    func alertError(message: String) {
         
         print("Show error alert")
         
-            let alert = UIAlertController(title: "Alert", message: "Check your internet connection", preferredStyle: UIAlertController.Style.alert)
+            let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
             alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
 
@@ -80,6 +81,15 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         let user = LoginInfo(username: Email_Input.text!, password: Password_Input.text!)
         
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        activityIndicator.color = .black
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
         authenticate(user: user, completionHandeler: {self.goToMapViewController()})
         
     }
@@ -92,6 +102,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
     
         
        DispatchQueue.main.async {
+        
+        self.activityIndicator.stopAnimating()
         
             let secondViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainNavigationController")
 
@@ -183,7 +195,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
                 
                 DispatchQueue.main.async {
                     
-                    self.alertError()
+                    self.alertError(message: "Unable to comunicate with the server Try later")
+                    self.activityIndicator.stopAnimating()
                     
                 
                 }
@@ -224,10 +237,12 @@ class ViewController: UIViewController, UITextFieldDelegate{
                 }
                     
                 if ErrorLoginResponse.status == 403 {
-                        
-                    self.alertError()
-                        
-                    print("Invalid Credential")
+                    
+                    DispatchQueue.main.async {
+                        self.alertError(message: "Invalid credentials")
+                        self.activityIndicator.stopAnimating()
+                    }
+
                         
                     return
                         
