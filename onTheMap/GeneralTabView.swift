@@ -62,6 +62,7 @@ class GeneralTabView: UITabBarController {
             }
             
             do {
+                                
                 //var myData = String(data: data, encoding: .utf8)!
                 let StudentResponse = try JSONDecoder().decode(StudentsInfoResults.self, from: data)
                 self.StudentsArray = StudentResponse.results.map({$0})

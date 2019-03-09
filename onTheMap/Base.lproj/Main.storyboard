@@ -28,7 +28,6 @@
                                 <state key="normal" title="LOGIN"/>
                                 <connections>
                                     <action selector="onLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iNp-pd-gWo"/>
-                                    <segue destination="gTW-Br-isx" kind="show" id="e54-Ym-x3d"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8qH-xw-hyc">
@@ -201,7 +200,7 @@
         <!--MapView Controller-->
         <scene sceneID="Kaw-bt-xaB">
             <objects>
-                <viewController id="apE-wu-UZG" userLabel="MapView Controller" customClass="MapScreenViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapScreenViewController" id="apE-wu-UZG" userLabel="MapView Controller" customClass="MapScreenViewController" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cc8-7X-muM">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -235,7 +234,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dfW-tM-cP5">
             <objects>
-                <navigationController id="gTW-Br-isx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" id="gTW-Br-isx" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4xP-MT-wtO">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -380,7 +379,7 @@
         <!--On The Map-->
         <scene sceneID="Ka0-jR-VPX">
             <objects>
-                <tabBarController id="T62-sf-8VZ" customClass="GeneralTabView" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="GeneralTabView" id="T62-sf-8VZ" customClass="GeneralTabView" customModule="onTheMap" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="On The Map" id="PTq-X3-MQv">
                         <barButtonItem key="leftBarButtonItem" title="Logout" id="JqU-tl-635">
                             <connections>

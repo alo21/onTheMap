@@ -80,8 +80,24 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         let user = LoginInfo(username: Email_Input.text!, password: Password_Input.text!)
         
-        authenticate(user: user)
+        authenticate(user: user, completionHandeler: {self.goToMapViewController()})
         
+    }
+    
+    
+    
+    
+    
+    func goToMapViewController() {
+    
+        
+       DispatchQueue.main.async {
+        
+            let secondViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainNavigationController")
+
+            self.present(secondViewController, animated: true, completion: nil)
+        }
+
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -140,7 +156,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
     }
     
-    func authenticate(user: LoginInfo) {
+    func authenticate(user: LoginInfo, completionHandeler: @escaping()->Void) {
         
         var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
         request.httpMethod = "POST"
@@ -178,14 +194,60 @@ class ViewController: UIViewController, UITextFieldDelegate{
             }
             
             
-            let range = Range(5..<data!.count)
-            let newData = data?.subdata(in: range) /* subset response data! */
+            guard let data = data else {
+                
+                print("No data")
+                return
+            }
             
-            print("Data inizio")
-            print(String(data: newData!, encoding: .utf8)!)
-            print("Data fine")
+            do {
+                
+                
+                
+                let range = Range(5..<data.count)
+                let newData = data.subdata(in: range) /* subset response data! */
+                
+                print(String(data: newData, encoding: .utf8)!)
+                
+                guard let ErrorLoginResponse = try? JSONDecoder().decode(LoginResult.self, from: newData) else  {
+                    
+                    let SuccessLoginResponse = try JSONDecoder().decode(SuccessLoginResult.self, from: newData)
+                
+                    if SuccessLoginResponse.account.registered {
+                        //print(newData)*/
+                        print("Data fine")
+                        completionHandeler()
+                    }
+                    
+                    return
+                    
+                }
+                    
+                if ErrorLoginResponse.status == 403 {
+                        
+                    self.alertError()
+                        
+                    print("Invalid Credential")
+                        
+                    return
+                        
+                    }
+                
+            } catch {
+                
+                
+                print("Something went wrong")
+                print(error)
+                
+            }
+            
+            
+            
         }
         task.resume()
+        
+        
+        
     }
     
 

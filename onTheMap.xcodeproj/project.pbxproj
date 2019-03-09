@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		D30811BF222BF2AB001BDCF7 /* MapScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30811BE222BF2AB001BDCF7 /* MapScreenViewController.swift */; };
 		D32DB91B222F24A700082AF7 /* TableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D32DB91A222F24A700082AF7 /* TableCell.swift */; };
+		D36C18832234466B00E05C83 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C18822234466B00E05C83 /* LoginResult.swift */; };
+		D36C188522346F0900E05C83 /* SuccessLoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C188422346F0900E05C83 /* SuccessLoginResult.swift */; };
 		D379D48B222C42C100B73F1C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379D48A222C42C100B73F1C /* StudentInformation.swift */; };
 		D379D48D222C9CDB00B73F1C /* StudentsInfoResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379D48C222C9CDB00B73F1C /* StudentsInfoResults.swift */; };
 		D3C0AA2E223052AE001038BC /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0AA2D223052AE001038BC /* AddPinViewController.swift */; };
@@ -26,6 +28,8 @@
 /* Begin PBXFileReference section */
 		D30811BE222BF2AB001BDCF7 /* MapScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapScreenViewController.swift; sourceTree = "<group>"; };
 		D32DB91A222F24A700082AF7 /* TableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableCell.swift; sourceTree = "<group>"; };
+		D36C18822234466B00E05C83 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
+		D36C188422346F0900E05C83 /* SuccessLoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuccessLoginResult.swift; sourceTree = "<group>"; };
 		D379D48A222C42C100B73F1C /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		D379D48C222C9CDB00B73F1C /* StudentsInfoResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsInfoResults.swift; sourceTree = "<group>"; };
 		D3C0AA2D223052AE001038BC /* AddPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
@@ -87,6 +91,8 @@
 				D32DB91A222F24A700082AF7 /* TableCell.swift */,
 				D3C0AA2D223052AE001038BC /* AddPinViewController.swift */,
 				D3C0AA2F22305AE3001038BC /* AddPlaceMapViewController.swift */,
+				D36C18822234466B00E05C83 /* LoginResult.swift */,
+				D36C188422346F0900E05C83 /* SuccessLoginResult.swift */,
 			);
 			path = onTheMap;
 			sourceTree = "<group>";
@@ -162,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D36C18832234466B00E05C83 /* LoginResult.swift in Sources */,
 				D3C936382225F57A000CA419 /* ViewController.swift in Sources */,
 				D3C0AA2E223052AE001038BC /* AddPinViewController.swift in Sources */,
 				D379D48B222C42C100B73F1C /* StudentInformation.swift in Sources */,
@@ -169,6 +176,7 @@
 				D3E64C6D22260DE6009F6836 /* TableViewController.swift in Sources */,
 				D379D48D222C9CDB00B73F1C /* StudentsInfoResults.swift in Sources */,
 				D3C936362225F57A000CA419 /* AppDelegate.swift in Sources */,
+				D36C188522346F0900E05C83 /* SuccessLoginResult.swift in Sources */,
 				D3C0AA3022305AE3001038BC /* AddPlaceMapViewController.swift in Sources */,
 				D30811BF222BF2AB001BDCF7 /* MapScreenViewController.swift in Sources */,
 				D3C0AA322230952C001038BC /* StudentInformationSend.swift in Sources */,

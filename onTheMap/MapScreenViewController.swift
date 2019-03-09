@@ -55,9 +55,8 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
         
         print(mapView)
         
-            GeneralTabView().getStudentData() {
-            
-        self.createAnnotations()
+        GeneralTabView().getStudentData() {
+            self.createAnnotations()
             
         }
         
