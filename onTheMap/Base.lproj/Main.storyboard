@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.59" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.45"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -40,12 +40,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" textContentType="email"/>
                                 <connections>
-                                    <action selector="EditingChan:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="46O-lR-jwa"/>
-                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="6oP-E9-x3o"/>
-                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="dwB-ni-ubm"/>
-                                    <action selector="EditingChanges:" destination="BYZ-38-t0r" eventType="editingChanged" id="Zd1-1B-cVe"/>
-                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="0bT-xw-Xb4"/>
-                                    <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="M1d-yT-rB1"/>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="pI3-As-fay"/>
                                 </connections>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="bezel" placeholder="Password" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="otV-9e-GCj">
@@ -58,14 +53,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                 <connections>
-                                    <action selector="EditingChan:" destination="BYZ-38-t0r" eventType="editingChanged" id="71I-ro-wTT"/>
-                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="8cP-sx-IsF"/>
-                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="S1w-VT-vRs"/>
-                                    <action selector="EditingChanges:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="zNS-pw-2WF"/>
-                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="8Pl-Kl-Spd"/>
-                                    <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="eML-Zf-3OD"/>
-                                    <action selector="TextFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="0gY-42-l0d"/>
-                                    <action selector="WhileEditing:" destination="BYZ-38-t0r" eventType="valueChanged" id="kkI-0d-v0X"/>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="E9Y-tc-4NB"/>
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="g18-9C-47v">

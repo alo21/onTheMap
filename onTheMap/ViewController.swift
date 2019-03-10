@@ -59,16 +59,21 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
     
+    @IBAction func EditingChanged(_ sender: UITextField) {
+        
+        LoginButton.isEnabled = !Email_Input.text!.isEmpty && !Password_Input.text!.isEmpty
+        
+        
+    }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
         
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
-    
-    
-    /*LoginButton.isEnabled = !Email_Input.text!.isEmpty && !Password_Input.text!.isEmpty
-     */
+
 
     
     @IBAction func noAccountPressed(_ sender: UIButton) {
@@ -152,15 +157,37 @@ class ViewController: UIViewController, UITextFieldDelegate{
         return true
     }
     
-    
     @objc func keyboardWillShow(_ notification:Notification) {
         
-        if (currentTappedTextField == Password_Input) {
+        
+        print("TextFieled - Keyborad: ")
+        print(getTextFieldPosition(currentTappedTextField!) - getKeyboardHeight(notification))
+        
+        print("KeyBoard: ")
+        print(getKeyboardHeight(notification))
+        
+        print("TextField: ")
+        print(getTextFieldPosition(currentTappedTextField!))
+        
+        
+        if (getTextFieldPosition(currentTappedTextField!) - getKeyboardHeight(notification)) <= 0 {
             
-            view.frame.origin.y -= getKeyboardHeight(notification)/2
+            print(getKeyboardHeight(notification) - getTextFieldPosition(currentTappedTextField!))
+            
         }
         
     }
+    
+    
+    func getTextFieldPosition(_ textField: UITextField)-> CGFloat{
+        
+        let frm: CGRect = textField.frame
+        
+        return frm.origin.y
+        
+    }
+    
+    
     
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
