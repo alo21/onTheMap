@@ -44,7 +44,7 @@ class GeneralTabView: UITabBarController {
         // Do any additional setup after loading the view.
     }
     
-    func getStudentData(completionHandeler:@escaping()->Void) {
+    func getStudentData(completionHandeler:@escaping() -> Void) {
         
         print("Getting Student data")
     
@@ -105,7 +105,30 @@ class GeneralTabView: UITabBarController {
         task.resume()
         
     }
-
+    
+    
+    
+    @IBAction func refreshButtonPressed(_ sender: UIBarButtonItem) {
+        
+        print("Refresh button pressed")
+        
+        self.getStudentData(completionHandeler: {
+            
+            print("Reloadede")
+            
+        })
+        
+    }
+    
+    
+    func presentMapViewAfterRefresh() {
+        
+        let secondViewController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainNavigationController")
+        
+        self.present(secondViewController, animated: true, completion: nil)
+        
+    }
+    
     
     
     
