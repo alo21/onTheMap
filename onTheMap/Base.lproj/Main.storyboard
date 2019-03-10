@@ -40,7 +40,11 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" textContentType="email"/>
                                 <connections>
-                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="3r7-44-BI8"/>
+                                    <action selector="EditingChan:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="46O-lR-jwa"/>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="6oP-E9-x3o"/>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="dwB-ni-ubm"/>
+                                    <action selector="EditingChanges:" destination="BYZ-38-t0r" eventType="editingChanged" id="Zd1-1B-cVe"/>
+                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidBegin" id="0bT-xw-Xb4"/>
                                     <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="M1d-yT-rB1"/>
                                 </connections>
                             </textField>
@@ -54,8 +58,14 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" keyboardAppearance="alert" secureTextEntry="YES" textContentType="password"/>
                                 <connections>
-                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="nol-Rf-65i"/>
-                                    <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="cFM-yj-vWi"/>
+                                    <action selector="EditingChan:" destination="BYZ-38-t0r" eventType="editingChanged" id="71I-ro-wTT"/>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="8cP-sx-IsF"/>
+                                    <action selector="EditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="S1w-VT-vRs"/>
+                                    <action selector="EditingChanges:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="zNS-pw-2WF"/>
+                                    <action selector="EditingDidBegin:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="8Pl-Kl-Spd"/>
+                                    <action selector="EditingDidEnd:" destination="BYZ-38-t0r" eventType="editingDidEnd" id="eML-Zf-3OD"/>
+                                    <action selector="TextFieldEditingChanged:" destination="BYZ-38-t0r" eventType="editingChanged" id="0gY-42-l0d"/>
+                                    <action selector="WhileEditing:" destination="BYZ-38-t0r" eventType="valueChanged" id="kkI-0d-v0X"/>
                                 </connections>
                             </textField>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginLogo" translatesAutoresizingMaskIntoConstraints="NO" id="g18-9C-47v">
@@ -114,7 +124,7 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="Email_Input" destination="8qH-xw-hyc" id="0Xo-eB-er0"/>
+                        <outlet property="Email_Input" destination="8qH-xw-hyc" id="go4-bc-wzW"/>
                         <outlet property="LoginButton" destination="a6T-Gy-bev" id="a7c-MO-xog"/>
                         <outlet property="NoAccount" destination="NFc-Qo-p8r" id="pt8-D2-Efl"/>
                         <outlet property="Password_Input" destination="otV-9e-GCj" id="CD1-KX-FOr"/>

@@ -18,7 +18,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
     
-    @IBOutlet var Email_Input: UITextField!
+    
+    @IBOutlet weak var Email_Input: UITextField!
     @IBOutlet weak var Password_Input: UITextField!
     @IBOutlet weak var LoginButton: UIButton!
     var currentTappedTextField : UITextField?
@@ -66,20 +67,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
     }
     
     
-    
-    @IBAction func EditingDidEnd(_ sender: UITextField) {
-    
-        LoginButton.isEnabled = !Email_Input.text!.isEmpty && !Password_Input.text!.isEmpty
-        
-    }
-    
-    
-    @IBAction func EditingDidBegin(_ sender: UITextField) {
-        
-        LoginButton.isEnabled = !Email_Input.text!.isEmpty && !Password_Input.text!.isEmpty
-        
-        
-    }
+    /*LoginButton.isEnabled = !Email_Input.text!.isEmpty && !Password_Input.text!.isEmpty
+     */
+
     
     @IBAction func noAccountPressed(_ sender: UIButton) {
         let app = UIApplication.shared
@@ -136,6 +126,14 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         
+        
+    }
+    
+    
+    
+    @IBAction func EditingDidBegin(_ sender: Any) {
+        
+        print("Editing did begin")
         
     }
     
@@ -256,12 +254,21 @@ class ViewController: UIViewController, UITextFieldDelegate{
                     DispatchQueue.main.async {
                         self.alertError(message: "Invalid credentials")
                         self.activityIndicator.stopAnimating()
+                    
                     }
-
-                        
+                
                     return
                         
+                    } else if (ErrorLoginResponse.status == 400) {
+                    
+                    DispatchQueue.main.async {
+                        self.alertError(message: "Please fill all fields")
+                        self.activityIndicator.stopAnimating()
+                        
                     }
+                    
+                    return
+                }
                 
             } catch {
                 
