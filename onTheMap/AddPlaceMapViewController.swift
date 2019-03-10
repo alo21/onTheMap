@@ -25,6 +25,7 @@ class AddPlaceMapViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var finishButton: UIButton!
+    var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -75,8 +76,19 @@ class AddPlaceMapViewController: UIViewController {
     }
     
     
-    @IBAction func onFinishClicked(_ sender: Any) {
+    func alertError(message: String) {
         
+        print("Show error alert")
+        
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
+    
+    func sendMapInformation(completionHandler: @escaping()->Void){
         
         var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
         request.httpMethod = "POST"
@@ -88,19 +100,68 @@ class AddPlaceMapViewController: UIViewController {
         let jsonData = try! encoder.encode(infoToSend)
         
         
-        print(jsonData)
-        
         request.httpBody = jsonData
         let session = URLSession.shared
         let task = session.dataTask(with: request) { data, response, error in
             if error != nil { // Handle error…
+                
+                print("Something didn't work")
+                
+                DispatchQueue.main.async {
+                    
+                    self.activityIndicator.stopAnimating()
+                    self.alertError(message: "Unable to comunicate with the server Try later")
+                    
+                    
+                }
+                
                 return
-            } else {
-                print(error)
+                
             }
+            
             print(String(data: data!, encoding: .utf8)!)
+            completionHandler()
         }
         task.resume()
+        
+        
+        
+    }
+    
+    func goBack() {
+        
+        DispatchQueue.main.async {
+            self.activityIndicator.stopAnimating()
+        
+        
+            //let MainNavigationController = UIStoryboard.init(name: "Main", bundle: Bundle.main).instantiateViewController(withIdentifier: "MainNavigationController")
+            
+            let viewControllers: [UIViewController] = self.navigationController!.viewControllers as [UIViewController];
+        
+            self.navigationController?.popToViewController(viewControllers[viewControllers.count - 3], animated: true)
+            
+        }
+        
+        //self.present(MainNavigationController, animated: true, completion: nil)
+
+        //self.navigationController?.popToViewController(MainNavigationController, animated: true)
+        
+        
+    }
+    
+    
+    
+    @IBAction func onFinishClicked(_ sender: Any) {
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        activityIndicator.color = .black
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+        sendMapInformation(completionHandler: {self.goBack()})
         
         
     }

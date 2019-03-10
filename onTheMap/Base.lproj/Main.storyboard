@@ -63,37 +63,38 @@
                                     <constraint firstAttribute="height" constant="75" id="NfY-Km-Boi"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qo4-ad-Atc">
-                                <rect key="frame" x="67" y="340" width="241" height="21"/>
-                                <accessibility key="accessibilityConfiguration" label="dasd">
-                                    <accessibilityTraits key="traits" link="YES" staticText="YES"/>
-                                </accessibility>
-                                <attributedString key="attributedText">
-                                    <fragment content="Don't have an account. ">
-                                        <attributes>
-                                            <font key="NSFont" size="17" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Sing UP">
-                                        <attributes>
-                                            <color key="NSColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="17" name=".AppleSystemUIFont"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NFc-Qo-p8r">
+                                <rect key="frame" x="88.5" y="340" width="198" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="198" id="CKO-2W-HMr"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Don't have account? ">
+                                            <attributes>
+                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" metaFont="system" size="15"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="Sign Up">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="system" size="15"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="noAccountPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="zmP-bm-FJQ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="a6T-Gy-bev" firstAttribute="top" secondItem="otV-9e-GCj" secondAttribute="bottom" constant="25" id="BUA-7P-Bkl"/>
                             <constraint firstItem="g18-9C-47v" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="EId-xK-DL5"/>
+                            <constraint firstItem="NFc-Qo-p8r" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="F7d-lf-97B"/>
                             <constraint firstItem="a6T-Gy-bev" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="FrJ-vN-Am5"/>
-                            <constraint firstItem="Qo4-ad-Atc" firstAttribute="top" secondItem="a6T-Gy-bev" secondAttribute="bottom" constant="25" id="Hfx-8I-tGk"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="otV-9e-GCj" secondAttribute="trailing" constant="25" id="KfF-QU-DIY"/>
-                            <constraint firstItem="Qo4-ad-Atc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="KhI-MJ-86s"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="8qH-xw-hyc" secondAttribute="trailing" constant="25" id="L1H-2J-0fO"/>
                             <constraint firstItem="8qH-xw-hyc" firstAttribute="top" secondItem="g18-9C-47v" secondAttribute="bottom" constant="25" id="ODD-Br-Mfp"/>
                             <constraint firstItem="a6T-Gy-bev" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ZgL-KT-E2S"/>
@@ -102,6 +103,7 @@
                             <constraint firstItem="otV-9e-GCj" firstAttribute="top" secondItem="8qH-xw-hyc" secondAttribute="bottom" constant="25" id="kjW-71-Qfi"/>
                             <constraint firstItem="otV-9e-GCj" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="pyI-MN-ObP"/>
                             <constraint firstItem="g18-9C-47v" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="25" id="pzc-ZA-KbH"/>
+                            <constraint firstItem="NFc-Qo-p8r" firstAttribute="top" secondItem="a6T-Gy-bev" secondAttribute="bottom" constant="25" id="v0H-dM-qoQ"/>
                             <constraint firstItem="8qH-xw-hyc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="25" id="zBT-Jv-PRq"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
@@ -109,6 +111,7 @@
                     <connections>
                         <outlet property="Email_Input" destination="8qH-xw-hyc" id="0Xo-eB-er0"/>
                         <outlet property="LoginButton" destination="a6T-Gy-bev" id="a7c-MO-xog"/>
+                        <outlet property="NoAccount" destination="NFc-Qo-p8r" id="pt8-D2-Efl"/>
                         <outlet property="Password_Input" destination="otV-9e-GCj" id="CD1-KX-FOr"/>
                     </connections>
                 </viewController>

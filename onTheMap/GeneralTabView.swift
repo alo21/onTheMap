@@ -32,6 +32,8 @@ class GeneralTabView: UITabBarController {
     override func viewWillAppear(_ animated: Bool) {
         
         
+        
+        
     }
     
     override func viewDidLoad() {

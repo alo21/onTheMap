@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import LocalAuthentication
+
 
 class ViewController: UIViewController, UITextFieldDelegate{
     
@@ -21,6 +23,8 @@ class ViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var LoginButton: UIButton!
     var currentTappedTextField : UITextField?
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
+    
+    @IBOutlet weak var NoAccount: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -76,6 +80,13 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         
     }
+    
+    @IBAction func noAccountPressed(_ sender: UIButton) {
+        let app = UIApplication.shared
+        app.open(URL(string: "http://udacity.com")!)
+        
+    }
+    
     
     @IBAction func onLoginPressed(_ sender: UIButton) {
         
@@ -178,12 +189,17 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         //request.httpBody = try! JSONEncoder().encode(user)
         
-        let baseString = "{\"udacity\": {\"username\": \"" + user.username + "\", \"password\": \""
-            + user.password + "\"}}"
-
+        let LoginData = LoginPost(udacity: PersonalInfo(username: user.username, password: user.password))
         
-        request.httpBody = baseString.data(using: .utf8)
-
+        
+        guard let LoginRequestBody = try? JSONEncoder().encode(LoginData) else {
+            
+            print("Unable to encode LoginData")
+            return
+            
+        }
+        
+        request.httpBody = LoginRequestBody
         
         let session = URLSession.shared
         
@@ -195,10 +211,9 @@ class ViewController: UIViewController, UITextFieldDelegate{
                 
                 DispatchQueue.main.async {
                     
-                    self.alertError(message: "Unable to comunicate with the server Try later")
                     self.activityIndicator.stopAnimating()
+                    self.alertError(message: "Unable to comunicate with the server Try later")
                     
-                
                 }
                 
                 

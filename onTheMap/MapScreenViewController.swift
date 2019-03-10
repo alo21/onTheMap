@@ -33,18 +33,23 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         
+        /*GeneralTabView().getStudentData() {
+            
+            self.createAnnotations()
+            
+            
+        }*/
+    
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
         GeneralTabView().getStudentData() {
             
             self.createAnnotations()
             
             
         }
-    
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        
-
 
         
     }
