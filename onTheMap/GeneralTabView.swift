@@ -70,10 +70,8 @@ class GeneralTabView: UITabBarController {
                 self.StudentsArray = StudentResponse.results.map({$0})
                 
                 
-                
                 DispatchQueue.main.async {
                     
-            
                 let object = UIApplication.shared.delegate
                 let appDelegate = object as! AppDelegate
                 
