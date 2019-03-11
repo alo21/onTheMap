@@ -17,11 +17,7 @@ class AddPlaceMapViewController: UIViewController {
         return appDelegate.infoToAdd
     }
     
-    var infoToSend: StudentInformationSend {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.infoToSend
-    }
+    var infoToSend = StudentInformationSend(uniqueKey: nil, firstName: nil, lastName: nil, mapString: nil, mediaURL: nil, latitude: nil, longitude: nil, createdAt: nil, updatedAt: nil)
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var finishButton: UIButton!
@@ -63,12 +59,8 @@ class AddPlaceMapViewController: UIViewController {
                 
                 
                 //Create object to save
-                let infoToSave = StudentInformationSend(uniqueKey: "alos", firstName: "Alfredo", lastName: "Gatti", mapString: self.passedInfo.mapString, mediaURL: self.passedInfo.mediaURL, latitude: latitude, longitude: longitude, createdAt: nil, updatedAt: nil)
+                self.infoToSend = StudentInformationSend(uniqueKey: "alos", firstName: "Alfredo", lastName: "Gatti", mapString: self.passedInfo.mapString, mediaURL: self.passedInfo.mediaURL, latitude: latitude, longitude: longitude, createdAt: nil, updatedAt: nil)
                 
-                
-                let object = UIApplication.shared.delegate
-                let appDelegate = object as! AppDelegate
-                appDelegate.infoToSend = infoToSave
                                 
             }
             
@@ -81,49 +73,8 @@ class AddPlaceMapViewController: UIViewController {
         print("Show error alert")
         
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
-        
-        
-    }
-    
-    
-    func sendMapInformation(completionHandler: @escaping()->Void){
-        
-        var request = URLRequest(url: URL(string: "https://parse.udacity.com/parse/classes/StudentLocation")!)
-        request.httpMethod = "POST"
-        request.addValue("QrX47CA9cyuGewLdsL7o5Eb8iug6Em8ye0dnAbIr", forHTTPHeaderField: "X-Parse-Application-Id")
-        request.addValue("QuWThTdiRmTux3YaDseUSEpUKo7aBYM737yKd4gY", forHTTPHeaderField: "X-Parse-REST-API-Key")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        let encoder = JSONEncoder()
-        let jsonData = try! encoder.encode(infoToSend)
-        
-        
-        request.httpBody = jsonData
-        let session = URLSession.shared
-        let task = session.dataTask(with: request) { data, response, error in
-            if error != nil { // Handle error…
-                
-                print("Something didn't work")
-                
-                DispatchQueue.main.async {
-                    
-                    self.activityIndicator.stopAnimating()
-                    self.alertError(message: "Unable to comunicate with the server Try later")
-                    
-                    
-                }
-                
-                return
-                
-            }
-            
-            print(String(data: data!, encoding: .utf8)!)
-            completionHandler()
-        }
-        task.resume()
-        
         
         
     }
@@ -161,20 +112,22 @@ class AddPlaceMapViewController: UIViewController {
         
         activityIndicator.startAnimating()
         
-        sendMapInformation(completionHandler: {self.goBack()})
+        NetworkRequests().sendMapInformation(infoToSend: infoToSend,
+                           completionHandler: {self.goBack()},
+                           errorHandler: {error in
+                            
+                            DispatchQueue.main.async {
+                                
+                                self.activityIndicator.stopAnimating()
+                                self.alertError(message: error.localizedDescription)
+                                
+                                
+                            }
+                            
+        })
         
         
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

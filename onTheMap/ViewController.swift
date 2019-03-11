@@ -235,9 +235,5 @@ class ViewController: UIViewController, UITextFieldDelegate{
         view.frame.origin.y = 0
         
     }
-    
-    
-    
-
 }
 

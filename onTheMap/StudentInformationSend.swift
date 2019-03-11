@@ -19,3 +19,5 @@ struct StudentInformationSend: Codable {
     let createdAt: Date?
     let updatedAt: Date?
 }
+
+
