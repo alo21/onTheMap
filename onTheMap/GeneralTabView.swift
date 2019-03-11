@@ -22,9 +22,20 @@ class GeneralTabView: UITabBarController {
     
     @IBAction func logoutPressed(_ sender: UIBarButtonItem) {
         
-        dismiss(animated: true) {
-            print("dismissed")
-        }
+        NetworkRequests().logOutUser(completionHandler: {
+            DispatchQueue.main.async {
+                self.dismiss(animated: true)
+                print("dismissed")
+            }
+            
+        } ,errorHandler: {error in
+            
+            DispatchQueue.main.async {
+                self.alertError(message: error.localizedDescription)
+            }
+            
+        });
+    
         
     }
     
@@ -52,7 +63,7 @@ class GeneralTabView: UITabBarController {
         
         DispatchQueue.main.async {
             let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
         }
         
