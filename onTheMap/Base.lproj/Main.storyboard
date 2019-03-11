@@ -316,6 +316,7 @@
                                 <state key="normal" title="FIND LOCATION"/>
                                 <connections>
                                     <action selector="findLocation:" destination="o9l-KY-e0Y" eventType="touchUpInside" id="Abw-8v-s5L"/>
+                                    <action selector="onFindLocationPressed:" destination="o9l-KY-e0Y" eventType="touchUpInside" id="0Fo-Rv-WYf"/>
                                     <action selector="onLoginPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="LVU-v5-eI7"/>
                                     <segue destination="c02-fE-Vi3" kind="show" id="Poe-0y-ZQc"/>
                                 </connections>
@@ -341,6 +342,7 @@
                         <viewLayoutGuide key="safeArea" id="ztb-gc-pEP"/>
                     </view>
                     <connections>
+                        <outlet property="findPlaceButton" destination="cbv-ll-bkl" id="lwd-yn-obI"/>
                         <outlet property="location_Input" destination="lLi-1m-Plw" id="nIV-Xg-2b7"/>
                         <outlet property="website_Input" destination="f40-4N-Gt1" id="m3k-Lr-H1R"/>
                     </connections>

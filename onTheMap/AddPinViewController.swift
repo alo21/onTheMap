@@ -14,7 +14,7 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var location_Input: UITextField!
     @IBOutlet weak var website_Input: UITextField!
     var currentTappedTextField : UITextField?
-
+    @IBOutlet weak var findPlaceButton: UIButton!
     
 
     override func viewDidLoad() {
@@ -50,6 +50,12 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
         
     }
     
+    
+    @IBAction func onFindLocationPressed(_ sender: UIButton) {
+        
+        
+        
+    }
     
     
     

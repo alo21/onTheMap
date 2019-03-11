@@ -23,8 +23,22 @@ class AddPlaceMapViewController: UIViewController {
     @IBOutlet weak var finishButton: UIButton!
     var activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
+    
+    func alertError(message: String) {
+        
+        print("Show error alert")
+        
+        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+        
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        finishButton.isEnabled = false
 
         let searchRequest = MKLocalSearch.Request()
         searchRequest.naturalLanguageQuery = passedInfo.mapString
@@ -33,50 +47,58 @@ class AddPlaceMapViewController: UIViewController {
         
         activeSearch.start {(response, error) in
             
-            if(response == nil) {
-                print("No result")
-            
-            } else {
+            guard let mapKitError = error as? MKError else {
                 
-                let latitude = response?.boundingRegion.center.latitude
+                guard let networkError = error as? URLError else {
+                    
+                    self.finishButton.isEnabled = true
+                    
+                    let latitude = response?.boundingRegion.center.latitude
+                    
+                    let longitude = response?.boundingRegion.center.longitude
+                    
+                    
+                    
+                    //Create annotation
+                    let annotation = MKPointAnnotation()
+                    annotation.title = self.passedInfo.mapString
+                    annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
+                    self.mapView.addAnnotation(annotation)
+                    
+                    
+                    //Zooming to the coordinate
+                    let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
+                    let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
+                    let region = MKCoordinateRegion(center: coordinate, span: span)
+                    self.mapView.setRegion(region, animated: true)
+                    
+                    
+                    //Create object to save
+                    self.infoToSend = StudentInformationSend(uniqueKey: "alos", firstName: "Alfredo", lastName: "Gatti", mapString: self.passedInfo.mapString, mediaURL: self.passedInfo.mediaURL, latitude: latitude, longitude: longitude, createdAt: nil, updatedAt: nil)
+                    
+                    return
+                    
+                }
                 
-                let longitude = response?.boundingRegion.center.longitude
+                    DispatchQueue.main.async {
+                        self.alertError(message: error!.localizedDescription)
+                        
+                    }
+                    
                 
+                return
                 
-                
-                //Create annotation
-                let annotation = MKPointAnnotation()
-                annotation.title = self.passedInfo.mapString
-                annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
-                self.mapView.addAnnotation(annotation)
-                
-                
-                //Zooming to the coordinate
-                let coordinate:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude!, longitude!)
-                let span = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
-                let region = MKCoordinateRegion(center: coordinate, span: span)
-                self.mapView.setRegion(region, animated: true)
-                
-                
-                //Create object to save
-                self.infoToSend = StudentInformationSend(uniqueKey: "alos", firstName: "Alfredo", lastName: "Gatti", mapString: self.passedInfo.mapString, mediaURL: self.passedInfo.mediaURL, latitude: latitude, longitude: longitude, createdAt: nil, updatedAt: nil)
-                
-                                
             }
             
+            if(mapKitError.errorCode == 4){
+                
+                DispatchQueue.main.async {
+                    self.alertError(message: "No location found")
+                }
+            }
+            
+            return
         }
-    }
-    
-    
-    func alertError(message: String) {
-        
-        print("Show error alert")
-        
-        let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Okay", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-        
-        
     }
     
     func goBack() {
@@ -123,7 +145,7 @@ class AddPlaceMapViewController: UIViewController {
                                 
                                 
                             }
-                            
+                        
         })
         
         
