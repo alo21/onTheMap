@@ -12,12 +12,6 @@ import LocalAuthentication
 
 class ViewController: UIViewController, UITextFieldDelegate{
     
-    struct LoginInfo: Codable {
-        let username: String
-        let password: String
-    }
-    
-    
     
     @IBOutlet weak var Email_Input: UITextField!
     @IBOutlet weak var Password_Input: UITextField!
@@ -96,7 +90,45 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
         activityIndicator.startAnimating()
         
-        authenticate(user: user, completionHandeler: {self.goToMapViewController()})
+        NetworkRequests().authenticate(
+            
+            user: user,
+                                       
+            completionHandeler: {self.goToMapViewController()},
+        
+            errorHandler: {error in
+                
+                DispatchQueue.main.async {
+                    
+                    self.activityIndicator.stopAnimating()
+                    self.alertError(message: "Unable to comunicate with the server Try later")
+                    
+                }
+            },
+            
+            loginError: {errorCode in
+                
+                if errorCode==403 {
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.activityIndicator.stopAnimating()
+                        self.alertError(message: "Check your internet connection please")
+                        
+                    }
+                    
+                } else if errorCode == 400 {
+                    
+                    DispatchQueue.main.async {
+                        
+                        self.activityIndicator.stopAnimating()
+                        self.alertError(message: "Invalid credentials")
+                        
+                    }
+                    
+                }
+    
+            })
         
     }
     
@@ -204,115 +236,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         
     }
     
-    func authenticate(user: LoginInfo, completionHandeler: @escaping()->Void) {
-        
-        var request = URLRequest(url: URL(string: "https://onthemap-api.udacity.com/v1/session")!)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Accept")
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        // encoding a JSON body from a string, can also use a Codable struct
-        
-        //request.httpBody = try! JSONEncoder().encode(user)
-        
-        let LoginData = LoginPost(udacity: PersonalInfo(username: user.username, password: user.password))
-        
-        
-        guard let LoginRequestBody = try? JSONEncoder().encode(LoginData) else {
-            
-            print("Unable to encode LoginData")
-            return
-            
-        }
-        
-        request.httpBody = LoginRequestBody
-        
-        let session = URLSession.shared
-        
-        let task = session.dataTask(with: request) { data, response, error in
-            
-            if error != nil { // Handle error…
-                
-                print("Eerrore")
-                
-                DispatchQueue.main.async {
-                    
-                    self.activityIndicator.stopAnimating()
-                    self.alertError(message: "Unable to comunicate with the server Try later")
-                    
-                }
-                
-                
-                print("Fine errore")
-                return
-            }
-            
-            
-            guard let data = data else {
-                
-                print("No data")
-                return
-            }
-            
-            do {
-                
-                
-                
-                let range = Range(5..<data.count)
-                let newData = data.subdata(in: range) /* subset response data! */
-                
-                print(String(data: newData, encoding: .utf8)!)
-                
-                guard let ErrorLoginResponse = try? JSONDecoder().decode(LoginResult.self, from: newData) else  {
-                    
-                    let SuccessLoginResponse = try JSONDecoder().decode(SuccessLoginResult.self, from: newData)
-                
-                    if SuccessLoginResponse.account.registered {
-                        //print(newData)*/
-                        print("Data fine")
-                        completionHandeler()
-                    }
-                    
-                    return
-                    
-                }
-                    
-                if ErrorLoginResponse.status == 403 {
-                    
-                    DispatchQueue.main.async {
-                        self.alertError(message: "Invalid credentials")
-                        self.activityIndicator.stopAnimating()
-                    
-                    }
-                
-                    return
-                        
-                    } else if (ErrorLoginResponse.status == 400) {
-                    
-                    DispatchQueue.main.async {
-                        self.alertError(message: "Please fill all fields")
-                        self.activityIndicator.stopAnimating()
-                        
-                    }
-                    
-                    return
-                }
-                
-            } catch {
-                
-                
-                print("Something went wrong")
-                print(error)
-                
-            }
-            
-            
-            
-        }
-        task.resume()
-        
-        
-        
-    }
+    
     
 
 }

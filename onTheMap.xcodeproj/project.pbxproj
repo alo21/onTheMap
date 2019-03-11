@@ -14,6 +14,8 @@
 		D36C188922352A2300E05C83 /* LoginPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36C188822352A2300E05C83 /* LoginPost.swift */; };
 		D379D48B222C42C100B73F1C /* StudentInformation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379D48A222C42C100B73F1C /* StudentInformation.swift */; };
 		D379D48D222C9CDB00B73F1C /* StudentsInfoResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = D379D48C222C9CDB00B73F1C /* StudentsInfoResults.swift */; };
+		D3872FAE2235D11400A17066 /* NetworkRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3872FAD2235D11400A17066 /* NetworkRequests.swift */; };
+		D3872FB02235E30400A17066 /* LoginInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3872FAF2235E30400A17066 /* LoginInfo.swift */; };
 		D3C0AA2E223052AE001038BC /* AddPinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0AA2D223052AE001038BC /* AddPinViewController.swift */; };
 		D3C0AA3022305AE3001038BC /* AddPlaceMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0AA2F22305AE3001038BC /* AddPlaceMapViewController.swift */; };
 		D3C0AA322230952C001038BC /* StudentInformationSend.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3C0AA312230952C001038BC /* StudentInformationSend.swift */; };
@@ -34,6 +36,8 @@
 		D36C188822352A2300E05C83 /* LoginPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPost.swift; sourceTree = "<group>"; };
 		D379D48A222C42C100B73F1C /* StudentInformation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformation.swift; sourceTree = "<group>"; };
 		D379D48C222C9CDB00B73F1C /* StudentsInfoResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentsInfoResults.swift; sourceTree = "<group>"; };
+		D3872FAD2235D11400A17066 /* NetworkRequests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequests.swift; sourceTree = "<group>"; };
+		D3872FAF2235E30400A17066 /* LoginInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginInfo.swift; sourceTree = "<group>"; };
 		D3C0AA2D223052AE001038BC /* AddPinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPinViewController.swift; sourceTree = "<group>"; };
 		D3C0AA2F22305AE3001038BC /* AddPlaceMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceMapViewController.swift; sourceTree = "<group>"; };
 		D3C0AA312230952C001038BC /* StudentInformationSend.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentInformationSend.swift; sourceTree = "<group>"; };
@@ -96,6 +100,8 @@
 				D36C18822234466B00E05C83 /* LoginResult.swift */,
 				D36C188422346F0900E05C83 /* SuccessLoginResult.swift */,
 				D36C188822352A2300E05C83 /* LoginPost.swift */,
+				D3872FAD2235D11400A17066 /* NetworkRequests.swift */,
+				D3872FAF2235E30400A17066 /* LoginInfo.swift */,
 			);
 			path = onTheMap;
 			sourceTree = "<group>";
@@ -182,9 +188,11 @@
 				D36C188522346F0900E05C83 /* SuccessLoginResult.swift in Sources */,
 				D36C188922352A2300E05C83 /* LoginPost.swift in Sources */,
 				D3C0AA3022305AE3001038BC /* AddPlaceMapViewController.swift in Sources */,
+				D3872FAE2235D11400A17066 /* NetworkRequests.swift in Sources */,
 				D30811BF222BF2AB001BDCF7 /* MapScreenViewController.swift in Sources */,
 				D3C0AA322230952C001038BC /* StudentInformationSend.swift in Sources */,
 				D3E64C6F22260F87009F6836 /* GeneralTabView.swift in Sources */,
+				D3872FB02235E30400A17066 /* LoginInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
