@@ -13,7 +13,6 @@ import UIKit
 class NetworkRequests: UIViewController {
     
     var StudentsArray: [StudentInformation] = []
-    var myInfo: StudentInformation!
     
     
     
@@ -58,14 +57,12 @@ class NetworkRequests: UIViewController {
                 self.StudentsArray = StudentResponse.results.map({$0})
                 
                 
-                print(StudentResponse)
-                
-                
                 
                 DispatchQueue.main.async {
                     
                     let object = UIApplication.shared.delegate
                     let appDelegate = object as! AppDelegate
+                    var studentsArray: [StudentInformation] = []
                     
                     //Loop thrhough to save in shared
                     for student in self.StudentsArray {
@@ -73,10 +70,12 @@ class NetworkRequests: UIViewController {
                         if(student.latitude != nil || student.longitude != nil){
                             
                             appDelegate.Students.append(student)
+                            studentsArray.append(student)
                             
                         }
                     }
                     
+                    StudentsInformationClass().saveStudentsInformationArray(studentsArray: studentsArray)
                     print("Done getting data")
                     
                     completionHandler()

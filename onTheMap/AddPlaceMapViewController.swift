@@ -11,12 +11,6 @@ import MapKit
 
 class AddPlaceMapViewController: UIViewController {
     
-    var passedInfo: StudentInformation {
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        return appDelegate.infoToAdd
-    }
-    
     var infoToSend = StudentInformationSend(uniqueKey: nil, firstName: nil, lastName: nil, mapString: nil, mediaURL: nil, latitude: nil, longitude: nil, createdAt: nil, updatedAt: nil)
     
     @IBOutlet weak var mapView: MKMapView!
@@ -39,9 +33,11 @@ class AddPlaceMapViewController: UIViewController {
         super.viewDidLoad()
         
         finishButton.isEnabled = false
+        let userLocationString = StudentsInformationClass().getLocation()
+        let userURL = StudentsInformationClass().getURL()
 
         let searchRequest = MKLocalSearch.Request()
-        searchRequest.naturalLanguageQuery = passedInfo.mapString
+        searchRequest.naturalLanguageQuery = userLocationString
         
         let activeSearch = MKLocalSearch(request: searchRequest)
         
@@ -49,7 +45,7 @@ class AddPlaceMapViewController: UIViewController {
             
             guard let mapKitError = error as? MKError else {
                 
-                guard let networkError = error as? URLError else {
+                guard (error as? URLError) != nil else {
                     
                     self.finishButton.isEnabled = true
                     
@@ -61,7 +57,7 @@ class AddPlaceMapViewController: UIViewController {
                     
                     //Create annotation
                     let annotation = MKPointAnnotation()
-                    annotation.title = self.passedInfo.mapString
+                    annotation.title = userLocationString
                     annotation.coordinate = CLLocationCoordinate2DMake(latitude!, longitude!)
                     self.mapView.addAnnotation(annotation)
                     
@@ -74,7 +70,7 @@ class AddPlaceMapViewController: UIViewController {
                     
                     
                     //Create object to save
-                    self.infoToSend = StudentInformationSend(uniqueKey: "alos", firstName: "Alfredo", lastName: "Gatti", mapString: self.passedInfo.mapString, mediaURL: self.passedInfo.mediaURL, latitude: latitude, longitude: longitude, createdAt: nil, updatedAt: nil)
+                    self.infoToSend = StudentInformationSend(uniqueKey: "alos", firstName: "Alfredo", lastName: "Gatti", mapString: userLocationString, mediaURL: userURL, latitude: latitude, longitude: longitude, createdAt: nil, updatedAt: nil)
                     
                     return
                     
@@ -84,7 +80,7 @@ class AddPlaceMapViewController: UIViewController {
                         self.alertError(message: error!.localizedDescription)
                         
                     }
-                    
+                
                 
                 return
                 

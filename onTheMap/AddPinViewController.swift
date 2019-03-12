@@ -127,11 +127,9 @@ class AddPinViewController: UIViewController, UITextFieldDelegate {
     
     func save() {
         
-        let infoToSave = StudentInformation(objectId: "nil", uniqueKey: "nil", firstName: "nil", lastName: "nil", mapString: self.location_Input.text, mediaURL: self.website_Input.text, latitude: nil, longitude: nil, createdAt: nil, updatedAt: nil)
         
-        let object = UIApplication.shared.delegate
-        let appDelegate = object as! AppDelegate
-        appDelegate.infoToAdd = infoToSave
+        StudentsInformationClass().saveLocationaAndUrl(mapString: self.location_Input.text!, mediaURL: self.website_Input.text!)
+        
         
     }
 

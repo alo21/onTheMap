@@ -11,21 +11,17 @@ import MapKit
 
 class MapScreenViewController: UIViewController, MKMapViewDelegate {
     
-    
-    var myInfo: StudentInformation!
-    //var StudentsArray: [StudentInformation] = []
 
     
-    
-    var StudentsArray: [StudentInformation] {
+    /*var StudentsArray: [StudentInformation] {
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
         return appDelegate.Students
-    }
+    }*/
  
 
     @IBOutlet var mapView: MKMapView!
-    
+    let activityIndicator:UIActivityIndicatorView = UIActivityIndicatorView()
     
     
 
@@ -33,14 +29,34 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
         super.viewDidLoad()
         
         
-        /*GeneralTabView().getStudentData() {
-            
-            self.createAnnotations()
-            
-            
-        }*/
     
     
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        activityIndicator.center = self.view.center
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
+        activityIndicator.color = .black
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.startAnimating()
+        
+        NetworkRequests().getStudentsData(
+            
+            completionHandler: {
+                self.createAnnotations()
+                
+        }, errorHandler: {error in
+            
+            self.alertError(message: error.localizedDescription)
+            
+        })
+        
+        
+        
     }
     
     
@@ -49,7 +65,7 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
         print("Show error alert")
         
         let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
         
         
@@ -57,28 +73,15 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         
-        
-        NetworkRequests().getStudentsData(
-            
-            completionHandler: {
-                self.createAnnotations()
-                
-        }, errorHandler: {error in
-                
-                self.alertError(message: error.localizedDescription)
-                
-            }
-        )
-        
 
         
-    }
+        
+
+        }
     
     func reloadMap (){
         
         print("ReloadMap")
-        
-        print(mapView)
         
         /*NetworkRequests().getStudentsData {
             self.createAnnotations()
@@ -121,10 +124,13 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
     }
     
     func createAnnotations() {
+    
+        let students = StudentsInformationClass().getStudentsInformationArray()
         
-        print("Lol")
         
-        for student in StudentsArray {
+        print(students)
+        
+        for student in students {
             
             if(student.latitude == nil || student.longitude == nil || student.mapString == nil || student.mediaURL == nil){
                 continue
@@ -139,6 +145,8 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
             mapView.addAnnotation(annotations)
             
         }
+        
+        activityIndicator.stopAnimating()
         
         
     }

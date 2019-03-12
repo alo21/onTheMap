@@ -38,7 +38,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         print("Show error alert")
         
             let alert = UIAlertController(title: "Alert", message: message, preferredStyle: UIAlertController.Style.alert)
-            alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertAction.Style.default, handler: nil))
             self.present(alert, animated: true, completion: nil)
 
         
@@ -85,7 +85,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
         activityIndicator.center = self.view.center
         activityIndicator.hidesWhenStopped = true
         activityIndicator.style = UIActivityIndicatorView.Style.whiteLarge
-        activityIndicator.color = .black
+        activityIndicator.color = .white
         view.addSubview(activityIndicator)
         
         activityIndicator.startAnimating()

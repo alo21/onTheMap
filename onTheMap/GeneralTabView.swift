@@ -9,9 +9,6 @@
 import UIKit
 
 class GeneralTabView: UITabBarController {
-    
-    var StudentsArray: [StudentInformation] = []
-    var myInfo: StudentInformation!
 
     
     @IBOutlet var logoutButton: UIBarButtonItem!
