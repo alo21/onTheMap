@@ -117,8 +117,18 @@ class MapScreenViewController: UIViewController, MKMapViewDelegate {
         if control == view.rightCalloutAccessoryView {
             let app = UIApplication.shared
             if let toOpen = view.annotation?.subtitle! {
+                
+                guard let url = URL(string: toOpen) else {
+                    
+                    DispatchQueue.main.async {
+                        self.alertError(message: "The link you have privoded doesn't have a valid format")
+                    }
+                    
+                    return;
+                    
+                }
 
-                app.open(URL(string: toOpen)!)
+                app.open(url)
             }
         }
     }

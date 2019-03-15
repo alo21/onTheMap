@@ -101,7 +101,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
                 DispatchQueue.main.async {
                     
                     self.activityIndicator.stopAnimating()
-                    self.alertError(message: "Unable to comunicate with the server Try later")
+                    self.alertError(message: error.localizedDescription)
                     
                 }
             },
@@ -113,16 +113,7 @@ class ViewController: UIViewController, UITextFieldDelegate{
                     DispatchQueue.main.async {
                         
                         self.activityIndicator.stopAnimating()
-                        self.alertError(message: "Check your internet connection please")
-                        
-                    }
-                    
-                } else if errorCode == 400 {
-                    
-                    DispatchQueue.main.async {
-                        
-                        self.activityIndicator.stopAnimating()
-                        self.alertError(message: "Invalid credentials")
+                        self.alertError(message: "Account not found or invalid credentials.")
                         
                     }
                     
